@@ -2,12 +2,12 @@ openapi: 3.1.0
 info:
   title: Annuity Application Status APIs
   description: APIs for managing Annuity application data including application status, details, transmission, agents, parties, funding, documents, and more.
-  version: 1.0.0
+  version: 2.0.0
   license:
     name: MIT
     url: https://github.com/Insured-Retirement-Institute/Pending-Case/blob/main/LICENSE
 paths:
-  /v1/application-statuses/searches:
+  /v2/application-statuses/searches:
     post:
       operationId: postApplicationStatusSearch
       summary: Search for summary application statuses
@@ -16,9 +16,8 @@ paths:
         - Application Status
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
+        - $ref: '#/components/parameters/finishedCutoffDays'
         - $ref: '#/components/parameters/orderBy'
         - $ref: '#/components/parameters/sortOrder'
         - $ref: '#/components/parameters/start'
@@ -37,7 +36,7 @@ paths:
                 $ref: "#/components/schemas/SummaryApplicationStatusesPagedResult"
         "401":
           description: Unauthorized
-  /v1/application-statuses:
+  /v2/application-statuses:
     get:
       operationId: getApplicationStatuses
       summary: Retrieve summary application statuses 
@@ -46,8 +45,6 @@ paths:
         - Application Status
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/associatedFirmId'
         - $ref: '#/components/parameters/cusip'
@@ -56,6 +53,7 @@ paths:
         - $ref: '#/components/parameters/crdNumber'
         - $ref: '#/components/parameters/applicationOriginId'
         - $ref: '#/components/parameters/trackingNumber'
+        - $ref: '#/components/parameters/finishedCutoffDays'
         - $ref: '#/components/parameters/orderBy'
         - $ref: '#/components/parameters/sortOrder'
         - $ref: '#/components/parameters/start'
@@ -69,7 +67,7 @@ paths:
                 $ref: "#/components/schemas/SummaryApplicationStatusesPagedResult"
         "401":
           description: Unauthorized
-  /v1/application-statuses/{policyNumber}:
+  /v2/application-statuses/{policyNumber}:
     get:
       operationId: getApplicationStatusByPolicyNumber
       summary: Retrieve application status
@@ -78,8 +76,6 @@ paths:
         - Application Status
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -96,7 +92,7 @@ paths:
           description: Forbidden
         "404":
           description: NotFound
-  /v1/application-statuses/policies:
+  /v2/application-statuses/policies:
     get:
       operationId: getPolicies
       summary: Retrieve policies
@@ -105,8 +101,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/associatedFirmId'
         - $ref: '#/components/parameters/cusip'
@@ -115,6 +109,7 @@ paths:
         - $ref: '#/components/parameters/crdNumber'
         - $ref: '#/components/parameters/applicationOriginId'
         - $ref: '#/components/parameters/trackingNumber'
+        - $ref: '#/components/parameters/finishedCutoffDays'
         - $ref: '#/components/parameters/orderBy'
         - $ref: '#/components/parameters/sortOrder'
         - $ref: '#/components/parameters/start'
@@ -130,7 +125,7 @@ paths:
           description: Unauthorized
         "403":
           description: Forbidden
-  /v1/application-statuses/policies/{policyNumber}:
+  /v2/application-statuses/policies/{policyNumber}:
     get:
       operationId: getPolicyByPolicyNumber
       summary: Retrieve a policy
@@ -139,8 +134,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -157,7 +150,7 @@ paths:
           description: Forbidden
         "404":
           description: NotFound
-  /v1/application-statuses/policies/{policyNumber}/fundings:
+  /v2/application-statuses/policies/{policyNumber}/fundings:
     get:
       operationId: getFundingStatusByPolicyNumber
       summary: Retrieve policy funding data
@@ -166,8 +159,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -184,7 +175,7 @@ paths:
           description: Forbidden
         "404":
           description: NotFound
-  /v1/application-statuses/policies/{policyNumber}/document-reviews:
+  /v2/application-statuses/policies/{policyNumber}/document-reviews:
     get:
       operationId: getDocumentReviewStatusByPolicyNumber
       summary: Retrieve policy document review data
@@ -193,8 +184,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -211,7 +200,7 @@ paths:
           description: Forbidden
         "404":
           description: NotFound
-  /v1/application-statuses/policies/{policyNumber}/suitability:
+  /v2/application-statuses/policies/{policyNumber}/suitability:
     get:
       operationId: getSuitabilityInformationByPolicyNumber
       summary: Retrieve policy suitability data
@@ -220,8 +209,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -238,7 +225,7 @@ paths:
           description: Forbidden
         "404":
           description: NotFound
-  /v1/application-statuses/policies/{policyNumber}/can-sell-validations:
+  /v2/application-statuses/policies/{policyNumber}/can-sell-validations:
     get:
       operationId: getCanSellValidationByPolicyNumber
       summary: Retrieve policy can sell validation data
@@ -247,8 +234,6 @@ paths:
         - Policy
       parameters:
         - $ref: '#/components/parameters/correlationId'
-        - $ref: '#/components/parameters/senderParticipantId'
-        - $ref: '#/components/parameters/receiverParticipantId'
         - $ref: '#/components/parameters/brokerNumber'
         - $ref: '#/components/parameters/policyNumber'
         - $ref: '#/components/parameters/associatedFirmId'
@@ -274,26 +259,6 @@ components:
       required: false
       schema:
         type: string
-    senderParticipantId:
-      name: senderParticipantId
-      description: Optional custom header identifying the sender of the call
-      in: header
-      required: false
-      schema:
-        type: string
-        minLength: 8
-        maxLength: 8
-        pattern: (^[0-9]{8}$)(?<!^0+$)
-    receiverParticipantId:
-      name: receiverParticipantId
-      description: Optional custom header identifying the receiver of the call
-      in: header
-      required: false
-      schema:
-        type: string
-        minLength: 8
-        maxLength: 8
-        pattern: (^[0-9]{8}$)(?<!^0+$)
     brokerNumber:
       name: brokerNumber
       description: Optional custom header identifying the broker number of the call
@@ -367,6 +332,14 @@ components:
       required: false
       schema:
         type: string
+    finishedCutoffDays:
+      name: finishedCutoffDays
+      description: Optional query parameter for when a completed or cancelled policy is to drop off
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 7
     orderBy:
       name: orderBy
       description: Order by for pagination
@@ -374,8 +347,8 @@ components:
       required: false
       schema:
         type: string
-        enum: [policyNumber, status]
-        default: policyNumber
+        enum: [policyNumber, status, statusDate]
+        default: statusDate
     sortOrder:
       name: sortOrder
       description: Sort order for pagination
@@ -384,7 +357,7 @@ components:
       schema:
         type: string
         enum: [asc, desc]
-        default: asc
+        default: desc
     start:
       name: start
       description: Starting item for pagination
@@ -500,6 +473,7 @@ components:
                   - brokerageGeneralAgency
                   - registeredInvestmentAdvisoryFirm
                   - independentMarketingOrganization
+                  - brokerDealer
     EntityParty:
       description: Schema for entity party data
       type: object
@@ -619,6 +593,9 @@ components:
         dueDate:
           type: string
           format: date
+        isApproved:
+          description: If status is completed, this field denotes whether suitability was approved or declined
+          type: boolean
     DocumentReview:
       description: Schema for policy document review data
       type: object
@@ -773,11 +750,14 @@ components:
                     type: string
                     minLength: 1
                     maxLength: 2000
+                  methodOfInitiation:
+                    type: string
+                    enum: [fax, email, mail, replacement]
 
     PolicySummary:
       description: Schema for policy summary data
       type: object
-      required: [policyNumber,applicationOrigin,cusip,status,isActionNeeded,signedDate]
+      required: [policyNumber,applicationOrigin,cusip,status,statusDate]
       properties:
         policyNumber:
           type: string
@@ -809,6 +789,10 @@ components:
         status:
           type: string
           enum: [received, inProgress, completed, cancelled]
+        statusDate:
+          description: 
+          type: string
+          format: date
         delivery:
           type: object
           properties:
@@ -891,45 +875,6 @@ components:
               type: string
               minLength: 1
               maxLength: 2000
-        delivery:
-          type: object
-          properties:
-            sentDate:
-              type: string
-              format: date
-            method:
-              type: string
-              enum:
-                - fedex
-                - ups
-                - electronicDelivery
-                - handDelivery
-                - usps
-            trackingNumber:
-              type: string
-              minLength: 1
-              maxLength: 65
-        caseManager:
-          type: object
-          required: [fullName, phoneNumber]
-          properties:
-            fullName:
-              type: string
-              minLength: 1
-              maxLength: 180
-              pattern:  ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,180}
-            phoneNumber:
-              type: string
-              minLength: 10
-              maxLength: 15
-            emailAddress:
-              type: string
-            websiteURL:
-              type: string        
-        producers:
-          $ref: "#/components/schemas/Producers"
-        parties:
-          $ref: "#/components/schemas/Parties"
     Policies:
       description: Schema for policies
       type: array
@@ -1025,4 +970,7 @@ components:
           type: string
           minLength: 1
           maxLength: 65
+        finishedCutoffDays:
+          type: integer
+          default: 7
       additionalProperties: false
