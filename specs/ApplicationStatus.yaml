@@ -375,10 +375,14 @@ components:
         maximum: 1000
   schemas:
     cusip:
+      description: Generally used to identify financial instruments based on ABA standard CUSIP, but defined here with relaxed constraints to allow for annuity products that are not issued with standard ABA CUSIPs
       type: string
-      minLength: 9
-      maxLength: 9
-      pattern:  ^[0-9]{3}[A-Z0-9]{5}[0-9]$
+      minLength: 1
+      pattern:  ^[0-9A-Za-z][0-9A-Za-z\-_]+[0-9A-Za-z]$
+      examples:
+        standardCusip:
+          description: ABA Standard CUSIP
+          value: "401B23458"
     IndividualIdentity:
       description: Schema for individual identity data
       required: [firstName,lastName]
