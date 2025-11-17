@@ -290,10 +290,7 @@ components:
       in: query
       required: false
       schema:
-        type: string
-        minLength: 9
-        maxLength: 9
-        pattern: (^[a-zA-Z0-9](9)$)
+        $ref: '#/components/schemas/cusip'
     producerNumber:
       name: producerNumber
       description: Optional query parameter for the carrier assigned unique identifier.
@@ -377,6 +374,15 @@ components:
         minimum: 1
         maximum: 1000
   schemas:
+    cusip:
+      description: Generally used to identify financial instruments based on ABA standard CUSIP, but defined here with relaxed constraints to allow for annuity products that are not issued with standard ABA CUSIPs
+      type: string
+      minLength: 1
+      pattern:  ^[0-9A-Za-z][0-9A-Za-z\-_]+[0-9A-Za-z]$
+      examples:
+        standardCusip:
+          description: ABA Standard CUSIP
+          value: "401B23458"
     IndividualIdentity:
       description: Schema for individual identity data
       required: [firstName,lastName]
@@ -389,17 +395,17 @@ components:
           type: string
           minLength: 1
           maxLength: 105
-          pattern: ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,105}
+          pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,105}$
         middleName:
           type: string
           minLength: 1
           maxLength: 105
-          pattern: ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,105}
+          pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,105}$
         lastName:
           type: string
           minLength: 1
           maxLength: 105
-          pattern: ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,105}
+          pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,105}$
         taxId:
           type: string
           maxLength: 9
@@ -446,7 +452,7 @@ components:
           type: string
           minLength: 1
           maxLength: 180
-          pattern: ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,180} 
+          pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,180}$
         taxId:
           type: string
     EntityProducer:
@@ -735,7 +741,7 @@ components:
                     type: string
                     minLength: 1
                     maxLength: 180
-                    pattern:  ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,180}
+                    pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,180}$
                   accountNumber:
                     type: string
                   startDate:
@@ -777,10 +783,7 @@ components:
               type: string
               maxLength: 65
         cusip:
-          type: string
-          minLength: 9
-          maxLength: 9
-          pattern: (^[a-zA-Z0-9](9)$)
+          $ref: '#/components/schemas/cusip'
         productName:
           type: string
           maxLength: 180
@@ -817,7 +820,7 @@ components:
               type: string
               minLength: 1
               maxLength: 180
-              pattern:  ^[a-zA-Z0-9=()=*@#\\s.,'_/~%$!();:&amp;&quot;+&#x00ae;®`\\-\\\\?\"=]{1,180}
+              pattern: ^[a-zA-Z0-9=()*@#\s.,'_/~%$!();:&"®`\-\\?"]{1,180}$
             phoneNumber:
               type: string
               minLength: 10
@@ -948,10 +951,7 @@ components:
           minLength: 1
           maxLength: 65
         cusip:
-          type: string
-          minLength: 9
-          maxLength: 9
-          pattern: (^[a-zA-Z0-9](9)$)
+          $ref: '#/components/schemas/cusip'
         producerNumber:
           type: string
           maxLength: 30
