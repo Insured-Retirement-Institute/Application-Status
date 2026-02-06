@@ -2,4 +2,4 @@
 
 IRI's Application Status API standards
 
-Definition can be found at [/specs/ApplicationStatus.yaml](https://github.com/Insured-Retirement-Institute/Application-Status/blob/main/specs/ApplicationStatus.yaml) as well as the [GitHub Page](https://insured-retirement-institute.github.io/Style-Guide/) of the Style Guide repoistory.
+The OpenAPI specifications can be found at [api.irionline.org](https://api.irionline.org), which is the published GitHub Page of the [Digital-First-Specifications](https://github.com/Insured-Retirement-Institute/Digital-First-Specifications) repository.
