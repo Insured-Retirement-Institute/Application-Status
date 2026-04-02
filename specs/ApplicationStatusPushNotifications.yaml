@@ -243,9 +243,9 @@ webhooks:
         "403":
           description: Forbidden
   
-  sourceType:
+  fundingSourceTypeUpdated:
     post:
-      summary: Source Type Notification
+      summary: Funding Source Type Updated Notification
       description: Webhook fired when funding source type is determined
       tags:
         - Funding Notifications
@@ -261,7 +261,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.sourceType
+                  const: applicationStatus.fundingSourceTypeUpdated
                 policyNumber:
                   type: string
                 associatedFirmId:
