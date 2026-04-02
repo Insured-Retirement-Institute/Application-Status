@@ -111,10 +111,10 @@ webhooks:
         "403":
           description: Forbidden
   
-  suitabilityDecision:
+  suitabilityApproved:
     post:
-      summary: Suitability Decision Notification
-      description: Webhook fired when a suitability decision is made
+      summary: Suitability Approved Notification
+      description: Webhook fired when suitability is approved
       tags:
         - Suitability Notifications
       requestBody:
@@ -129,7 +129,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.suitabilityDecision
+                  const: applicationStatus.suitabilityApproved
                 policyNumber:
                   type: string
                 associatedFirmId:
