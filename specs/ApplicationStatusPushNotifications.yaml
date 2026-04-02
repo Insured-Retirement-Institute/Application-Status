@@ -28,7 +28,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.applicationRecieved
+                  const: applicationStatus.v1.applicationRecieved
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -61,7 +61,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.canSellActionNeeded
+                  const: applicationStatus.v1.canSellActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -94,7 +94,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.suitabilityActionNeeded
+                  const: applicationStatus.v1.suitabilityActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -127,7 +127,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.suitabilityApproved
+                  const: applicationStatus.v1.suitabilityApproved
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -160,7 +160,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.documentReviewActionNeeded
+                  const: applicationStatus.v1.documentReviewActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -193,7 +193,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingActionNeeded
+                  const: applicationStatus.v1.fundingActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -226,7 +226,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingTransferRequestSent
+                  const: applicationStatus.v1.fundingTransferRequestSent
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -259,7 +259,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingSourceTypeUpdated
+                  const: applicationStatus.v1.fundingSourceTypeUpdated
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -292,7 +292,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingTransferFollowUp
+                  const: applicationStatus.v1.fundingTransferFollowUp
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -325,7 +325,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingReceived
+                  const: applicationStatus.v1.fundingReceived
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -358,7 +358,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.applicationCompleted
+                  const: applicationStatus.v1.applicationCompleted
                 policyNumber:
                   type: string
                 associatedFirmId:
@@ -391,7 +391,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.applicationCancelled
+                  const: applicationStatus.v1.applicationCancelled
                 policyNumber:
                   type: string
                 associatedFirmId:
