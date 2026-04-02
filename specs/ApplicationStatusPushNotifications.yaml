@@ -144,10 +144,10 @@ webhooks:
         "403":
           description: Forbidden
   
-  documentReview:
+  documentReviewActionNeeded:
     post:
-      summary: Document Review Notification
-      description: Webhook fired when document review status changes
+      summary: Document Review Action Needed Notification
+      description: Webhook fired when document review requires action
       tags:
         - Document Notifications
       requestBody:
@@ -162,7 +162,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.documentReview
+                  const: applicationStatus.documentReviewActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
