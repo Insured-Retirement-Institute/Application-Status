@@ -177,9 +177,9 @@ webhooks:
         "403":
           description: Forbidden
   
-  fundingAction:
+  fundingActionNeeded:
     post:
-      summary: Funding Action Notification
+      summary: Funding Action Needed Notification
       description: Webhook fired when funding action is needed
       tags:
         - Funding Notifications
@@ -195,7 +195,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.fundingAction
+                  const: applicationStatus.fundingActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
