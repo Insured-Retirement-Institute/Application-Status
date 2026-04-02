@@ -210,10 +210,10 @@ webhooks:
         "403":
           description: Forbidden
   
-  transferRequest:
+  fundingTransferRequestSent:
     post:
-      summary: Transfer Request Notification
-      description: Webhook fired when a transfer request is initiated
+      summary: Funding Transfer Request Sent Notification
+      description: Webhook fired when a funding transfer request is sent
       tags:
         - Transfer Notifications
       requestBody:
@@ -228,7 +228,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.transferRequest
+                  const: applicationStatus.fundingTransferRequestSent
                 policyNumber:
                   type: string
                 associatedFirmId:
