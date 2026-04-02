@@ -45,10 +45,10 @@ webhooks:
         "403":
           description: Forbidden
   
-  canSell:
+  canSellActionNeeded:
     post:
-      summary: Can Sell Notification
-      description: Webhook fired when can-sell validation status changes
+      summary: Can Sell Action Needed Notification
+      description: Webhook fired when can-sell action is needed
       tags:
         - Validation Notifications
       requestBody:
@@ -63,7 +63,7 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.canSell
+                  const: applicationStatus.canSellActionNeeded
                 policyNumber:
                   type: string
                 associatedFirmId:
