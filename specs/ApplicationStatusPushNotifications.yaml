@@ -12,10 +12,10 @@ paths: {}
 
 
 webhooks:
-  initialAppNotify:
+  applicationRecieved:
     post:
-      summary: Initial Application Notification
-      description: Webhook fired when a new application is initially created
+      summary: Initial Application Recieved Notification
+      description: Webhook fired when a new application is recieved and a policy number is assigned
       tags:
         - Application Notifications
       requestBody:
@@ -30,13 +30,13 @@ webhooks:
                   $ref: '#/components/schemas/notificationStatus'
                 eventType:
                   type: string
-                  const: applicationStatus.initialAppNotify
+                  const: applicationStatus.applicationRecieved
                 policyNumber:
                   type: string
                 associatedFirmId:
                   type: string
                 notification:
-                  $ref: '#/components/schemas/AppNotify'
+                  $ref: '#/components/schemas/ApplicationRecievedNotification'
       responses:
         "200":
           description: Notification received successfully
@@ -414,8 +414,8 @@ components:
 
   ###### Payload schemas #######
   schemas:
-    AppNotify:
-      description: Schema for application notify data
+    ApplicationRecievedNotification:
+      description: Schema for application recieved notification data
       type: object
       required: [policyNumber, applicationOrigin, cusip, status, statusDate]
       properties:
